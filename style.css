@@ -1,0 +1,44 @@
+:root {
+    --bg: #f3f5f3;
+    --text: #1d211d;
+    --muted: #636964;
+    --accent: #0d7729;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: "Courier New", Courier, monospace;
+    display: grid;
+    place-items: center;
+}
+
+main {
+    width: 80%;
+    max-width: 500px;
+    margin-inline: auto;
+}
+
+footer {
+    color: var(--muted);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--accent);
+}
+
+.container {
+    width: 100%;
+    max-width: 500px;
+    margin-inline: auto;
+}
