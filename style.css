@@ -52,21 +52,29 @@ section {
     body {
         flex-direction: column;
         gap: 0;
+        height: 100%;
+        padding: 0;
     }
     aside {
         top: 0;
         width: 100%;
-        margin: 0 -24px;
-        padding: 12px 24px;
+        margin: 0;
+        padding: 12px;
+        box-sizing: border-box;
         background-color: var(--bg);
         border-bottom: 1px solid var(--muted);
     }
     nav {
-        flex-direction: row;
-        gap: 10px;
+        display: inline;
     }
-    section {
-        scroll-margin-top: 50px;
+    nav > a {
+        display: inline-block;
+    }
+    main {
+        overflow-y: scroll;
+        scroll-behavior: smooth;
+        padding: 24px;
+        padding-top: 0;
     }
 }
 
