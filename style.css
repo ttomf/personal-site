@@ -35,8 +35,6 @@ aside {
 main {
     margin: 0 auto;
     flex: 1;
-    display: grid;
-    place-items: center;
 }
 
 nav {
@@ -46,6 +44,29 @@ nav {
 
 section {
     width: 100%;
+    margin-bottom: 24px;
+}
+
+article {
+    border: 1px solid var(--muted);
+    border-radius: 6px;
+    padding: 6px;
+    margin-bottom: 6px;
+}
+
+dl {
+    display: grid;
+    grid-template-columns: max-content minmax(0, 1fr);
+    gap: 8px 20px;
+    margin: 0;
+}
+
+dt {
+    font-weight: bold;
+}
+
+dd {
+    margin: 0;
 }
 
 @media (max-width: 800px) {
@@ -79,17 +100,17 @@ section {
 }
 
 h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h2 {
     color: var(--accent);
     margin: 6px 0;
 }
 
 h1 {
     text-align: center;
+}
+
+h3 {
+    margin: 0;
 }
 
 small {
@@ -100,7 +121,7 @@ a {
     text-decoration: none;
     border-bottom: 1px dashed var(--accent);
     line-height: 1.5;
-    padding: 0 5px;
+    padding: 0 3px;
     color: var(--accent);
     background: linear-gradient(var(--accent), var(--accent)) border-box
         no-repeat left bottom / 0 100%;
@@ -116,4 +137,8 @@ a:hover {
 
 nav > a {
     font-style: italic;
+}
+
+p {
+    margin: 0;
 }
