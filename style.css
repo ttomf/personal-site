@@ -1,5 +1,6 @@
 :root {
     --bg: #f5f7f5;
+    --bg-tone: #e5e7e5;
     --text: #1d211d;
     --muted: #636964;
     --accent: #0d7729;
@@ -7,6 +8,7 @@
 @media (prefers-color-scheme: dark) {
     :root {
         --bg: #1d211d;
+        --bg-tone: #2d312d;
         --text: #f5f7f5;
         --muted: #afbfaf;
         --accent: #50e050;
@@ -41,7 +43,6 @@ aside {
 }
 
 main {
-    margin: 0 auto;
     flex: 1;
 }
 
@@ -126,7 +127,7 @@ small {
     color: var(--muted);
 }
 
-a {
+a:not(.card) {
     text-decoration: none;
     border-bottom: 1px dashed var(--accent);
     line-height: 1.5;
@@ -139,15 +140,36 @@ a {
         color 0.2s ease;
     text-align: center;
 }
-a:hover {
+a:not(.card):hover {
     background-size: 100% 100%;
     color: var(--bg);
+}
+
+a.card {
+    position: relative;
+    color: var(--text);
+    text-decoration: none;
+    display: block;
+    border-radius: 6px;
+    padding: 6px;
+    margin-bottom: 6px;
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+a.card:hover {
+    background-color: var(--bg-tone);
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid var(--muted);
 }
 
 nav > a {
     font-style: italic;
 }
 
-p {
+article > p {
     margin: 0;
 }
