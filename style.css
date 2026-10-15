@@ -185,14 +185,22 @@ pre > code {
 
 /* Code highlight */
 cs {
+    /* string */
     color: green;
 }
 cc {
+    /* comment */
     color: grey;
 }
 cm {
+    /* macro/constant */
     color: orangered;
 }
 cf {
+    /* function */
     color: royalblue;
+}
+ck {
+    /* keyword */
+    color: mediumpurple;
 }
