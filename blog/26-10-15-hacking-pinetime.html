@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Tom F. (ttomf) blog</title>
+        <meta
+            name="description"
+            content="Personal blog of Tom F. (ttomf), a software developer."
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Intel+One+Mono&display=swap"
+            rel="stylesheet"
+        />
+        <link href="/style.css" rel="stylesheet" />
+    </head>
+    <body>
+        <aside>
+            <nav>
+                <a href="/blog.html">← Back</a>
+            </nav>
+        </aside>
+        <main>
+            <h1>Hacking PineTime</h1>
+            <small>2026-10-15</small>
+            <p>
+                I recently got a hackable smartwatch
+                <a href="https://pine64.org/devices/pinetime/">PineTime</a>
+                through a Hack Club program, and I immediately started thinking
+                about improvements to
+                <a href="https://github.com/InfiniTimeOrg/InfiniTime"
+                    >InfiniTime</a
+                >, the firmware that powers PineTime.
+            </p>
+            <h2>Preparing</h2>
+            <p>
+                PineTime is designed to be hacked and customized, so I decided
+                to start by modifying InfiniTime itself. First, I had to set up
+                the development environment and figure out how to build the
+                firmware. Fortunately, InfiniTime has a well-organized project
+                structure and includes a Docker container for building the
+                firmware, so this was easy.
+            </p>
+            <h2>Adding watchface</h2>
+            <p>
+                First, I wanted to create a better watchface because the
+                built-in ones didn't fit my needs. It was pretty simple: I
+                copied the source files of an existing watchface, changed the
+                class name, added the new source files to CMakeLists.txt, and
+                built the firmware using Docker.
+            </p>
+            <p>
+                Modifying the watchface was straightforward. InfiniTime uses
+                <a href="https://lvgl.io/">LVGL</a>, a graphics library for
+                embedded devices. For example, creating and positioning a label
+                looks like this:
+            </p>
+            <pre><code><cc>// Create label</cc>
+label_seconds = <cf>lv_label_create</cf>(<cf>lv_scr_act</cf>(), <cm>nullptr</cm>);
+<cc>// Set text</cc>
+<cf>lv_label_set_text_static</cf>(label_seconds, <cs>":00"</cs>);
+<cc>// Set placement</cc>
+<cf>lv_obj_align</cf>(label_seconds, label_time, <cm>LV_ALIGN_OUT_BOTTOM_RIGHT</cm>, <cm>0</cm>, <cm>0</cm>);
+</code></pre>
+            <p>
+                I started by copying the Digital watchface, then added labels
+                for the battery percentage and seconds and changed the date
+                display to show the month as a number.
+            </p>
+            <h2>More Apps</h2>
+            <p>
+                In InfiniTime, each app is implemented as a class that inherits
+                from Screen. I am currently working on a FileViewer app that
+                will display files stored in PineTime's external SPI flash
+                memory.
+            </p>
+            <small>&copy; ttomf 2026</small>
+        </main>
+    </body>
+</html>

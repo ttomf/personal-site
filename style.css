@@ -173,3 +173,26 @@ nav > a {
 article > p {
     margin: 0;
 }
+
+pre > code {
+    font-family: "Intel One Mono", monospace;
+    background-color: var(--bg-tone);
+    display: block;
+    padding: 6px;
+    border-radius: 6px;
+    overflow: scroll;
+}
+
+/* Code highlight */
+cs {
+    color: green;
+}
+cc {
+    color: grey;
+}
+cm {
+    color: orangered;
+}
+cf {
+    color: royalblue;
+}
