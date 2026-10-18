@@ -58,7 +58,7 @@
                 looks like this:
             </p>
             <pre><code><cc>// Create label</cc>
-label_seconds = <cf>lv_label_create</cf>(<cf>lv_scr_act</cf>(), <cm>nullptr</cm>);
+<co>lv_obj_t*</co> label_seconds = <cf>lv_label_create</cf>(<cf>lv_scr_act</cf>(), <cm>nullptr</cm>);
 <cc>// Set text</cc>
 <cf>lv_label_set_text_static</cf>(label_seconds, <cs>":00"</cs>);
 <cc>// Set placement</cc>

@@ -1,6 +1,6 @@
 :root {
     --bg: #f5f7f5;
-    --bg-tone: #e5e7e5;
+    --bg-tone: #e9eae9;
     --text: #1d211d;
     --muted: #636964;
     --accent: #0d7729;
@@ -180,7 +180,7 @@ pre > code {
     display: block;
     padding: 6px;
     border-radius: 6px;
-    overflow: scroll;
+    overflow: auto;
 }
 
 /* Code highlight */
@@ -194,13 +194,44 @@ cc {
 }
 cm {
     /* macro/constant */
-    color: orangered;
+    color: darkgoldenrod;
 }
 cf {
     /* function */
     color: royalblue;
 }
+co {
+    /* operator/type */
+    color: steelblue;
+}
 ck {
     /* keyword */
-    color: mediumpurple;
+    color: darkmagenta;
+}
+
+@media (prefers-color-scheme: dark) {
+    cs {
+        /* string */
+        color: yellowgreen;
+    }
+    cc {
+        /* comment */
+        color: darkgrey;
+    }
+    cm {
+        /* macro/constant */
+        color: orange;
+    }
+    cf {
+        /* function */
+        color: dodgerblue;
+    }
+    co {
+        /* operator/type */
+        color: cornflowerblue;
+    }
+    ck {
+        /* keyword */
+        color: magenta;
+    }
 }
