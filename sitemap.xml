@@ -4,7 +4,32 @@
 
   <url>
        <loc>https://ttomf.cc/</loc>
-       <lastmod>2026-10-10</lastmod>
-       <priority>1.0</priority>
+       <lastmod>2026-10-19T12:33:18+00:00</lastmod>
+       <priority>1.0000</priority>
+  </url>
+  <url>
+       <loc>https://ttomf.cc/projects</loc>
+       <lastmod>2026-10-19T12:33:18+00:00</lastmod>
+       <priority>0.6400</priority>
+  </url>
+  <url>
+       <loc>https://ttomf.cc/blog</loc>
+       <lastmod>2026-10-19T12:33:18+00:00</lastmod>
+       <priority>0.6400</priority>
+  </url>
+  <url>
+       <loc>https://ttomf.cc/achievements</loc>
+       <lastmod>2026-10-19T12:33:18+00:00</lastmod>
+       <priority>0.6400</priority>
+  </url>
+  <url>
+       <loc>https://ttomf.cc/blog/26-10-15-hacking-pinetime</loc>
+       <lastmod>2026-10-19T12:33:18+00:00</lastmod>
+       <priority>0.4096</priority>
+  </url>
+  <url>
+       <loc>https://ttomf.cc/blog/26-10-11-building-my-website</loc>
+       <lastmod>2026-10-19T12:33:18+00:00</lastmod>
+       <priority>0.4096</priority>
   </url>
 </urlset>
