@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Tom F. (ttomf) blog</title>
+        <meta
+            name="description"
+            content="Personal blog of Tom F. (ttomf), a software developer."
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Intel+One+Mono&display=swap"
+            rel="stylesheet"
+        />
+        <link href="/style.css" rel="stylesheet" />
+    </head>
+    <body>
+        <aside>
+            <nav>
+                <a href="/blog.html">← Back</a>
+            </nav>
+        </aside>
+        <main>
+            <h1>Speeding up boot</h1>
+            <small>2026-10-21</small>
+            <p>
+                I love my Arch Linux notebook, but one thing always bothered me:
+                the boot time. It took about 20 seconds, and I wanted to make it
+                faster.
+            </p>
+            <p>
+                I tried several things, including disabling and masking systemd
+                services and removing initramfs hooks. Here is what actually
+                worked on my setup: Arch Linux on a Lenovo LOQ with RTX 5060.
+            </p>
+            <p>
+                These changes reduced my boot time by about 5 seconds, from 21
+                to 16 seconds. However, initializing <code>amdgpu</code> still
+                takes about 4 seconds, and the firmware alone takes 7 seconds!
+            </p>
+            <h2>Biggest improvements</h2>
+            <p>
+                The biggest improvement came from changing how the GPU drivers
+                are loaded during boot. In <code>/etc/mkinitcpio.conf</code>, I
+                removed <code>kms</code> from <code>HOOKS</code> and cleared
+                <code>MODULES</code>.
+            </p>
+            <pre><code><co>...</co>
+<cc># MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)</cc>
+MODULES=()
+<co>...</co>
+<cc># HOOKS=(systemd autodetect microcode modconf kms keyboard sd-vconsole block filesystems fsck)</cc>
+HOOKS=(systemd autodetect microcode modconf keyboard sd-vconsole block filesystems fsck)
+<co>...</co></code></pre>
+            <p>
+                I also added <code>amdgpu</code> to
+                <code>/etc/modules-load.d/amdgpu.conf</code> so that the AMD GPU
+                driver is loaded during userspace initialization.
+            </p>
+            <p>
+                This only moved GPU initialization from the initramfs to
+                userspace, but it still reduced the overall boot time by about 4
+                seconds. Removing the GPU modules also made
+                <code>initramfs-linux.img</code> much smaller, reducing its size
+                from 162 MB to just 22 MB and speeding up the boot process.
+            </p>
+            <h2>Smaller improvements</h2>
+            <p>
+                Disabling <code>NetworkManager-wait-online.service</code> and
+                removing the VirtualBox DKMS modules also helped. Together,
+                these changes reduced the boot time by about 1 second.
+            </p>
+            <small>&copy; ttomf 2026</small>
+        </main>
+    </body>
+</html>

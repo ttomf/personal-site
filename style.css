@@ -33,6 +33,7 @@ body {
     padding: 24px;
     padding-top: 0;
     gap: 24px;
+    line-height: 1.5rem;
 }
 
 aside {
@@ -175,12 +176,16 @@ article > p {
 }
 
 pre > code {
-    font-family: "Intel One Mono", monospace;
-    background-color: var(--bg-tone);
     display: block;
     padding: 6px;
-    border-radius: 6px;
     overflow: auto;
+}
+
+code {
+    font-family: "Intel One Mono", monospace;
+    background-color: var(--bg-tone);
+    padding: 2px;
+    border-radius: 6px;
 }
 
 /* Code highlight */
