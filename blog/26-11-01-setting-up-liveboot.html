@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Tom F. (ttomf) blog</title>
+        <meta
+            name="description"
+            content="Personal blog of Tom F. (ttomf), a software developer."
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Intel+One+Mono&display=swap"
+            rel="stylesheet"
+        />
+        <link href="/style.css" rel="stylesheet" />
+    </head>
+    <body>
+        <aside>
+            <nav>
+                <a href="/blog.html">← Back</a>
+            </nav>
+        </aside>
+        <main>
+            <h1>Setting up liveboot</h1>
+            <small>2026-11-01</small>
+            <p>
+                As another reward from
+                <a href="https://hackclub.com">Hack Club</a>, I chose the
+                Storage Grant. I used it to buy a 256 GB NVMe SSD (about 237
+                GiB) and an NVMe enclosure, which lets me connect the drive to
+                my PC via USB, just like a regular external SSD.
+            </p>
+            <h2>Why an NVMe SSD with an enclosure</h2>
+            <p>
+                For a portable system, performance is important. A regular USB
+                flash drive simply cannot match the speed of an NVMe SSD. NVMe
+                SSDs also generally offer better endurance and are less likely
+                to wear out after repeated writes. The enclosure is also
+                reusable, so swapping the drive for another NVMe SSD is
+                straightforward.
+            </p>
+            <h2>Preparing</h2>
+            <p>
+                I wanted both fast, convenient storage <i>and</i> a portable
+                system, so I split the drive into three partitions:
+            </p>
+            <ol>
+                <li>150 GiB exFAT for general-purpose storage</li>
+                <li>1 GiB FAT32 (EFI System Partition) for bootloader files</li>
+                <li>86 GiB ext4 for Arch Linux</li>
+            </ol>
+            <p>
+                The exFAT partition has to come first because some devices
+                cannot access partitions other than the first one.
+            </p>
+            <p>
+                I used standard tools: <code>cfdisk</code>,
+                <code>mkfs.exfat</code>, <code>mkfs.fat -F 32</code> and
+                <code>mkfs.ext4</code>.
+            </p>
+            <h2>Installing Arch Linux</h2>
+            <p>
+                The installation itself was nothing new; I've installed Arch
+                Linux many times before. However, this time I had to make sure
+                that the bootloader was installed to the external drive's EFI
+                System Partition without creating a boot entry in the PC's UEFI
+                NVRAM. This was achieved using the <code>--removable</code> flag
+                in <code>grub-install</code>.
+            </p>
+            <p>
+                For better portability, I also had to remove the
+                <code>autodetect</code> hook from <code>mkinitcpio.conf</code>.
+                Otherwise, the initramfs would only include necessary modules
+                for the hardware detected on my PC, causing problems on
+                different machines.
+            </p>
+            <h2>Final result</h2>
+            <p>
+                Now I have a portable Arch Linux installation alongside 150 GiB
+                of general-purpose storage, all on a single external NVMe drive.
+                Instead of carrying my laptop everywhere, I can simply plug the
+                drive into another computer and boot from it.
+            </p>
+            <small>&copy; ttomf 2026</small>
+        </main>
+    </body>
+</html>

@@ -169,6 +169,7 @@ hr {
 
 nav > a {
     font-style: italic;
+    white-space: nowrap;
 }
 
 article > p {
