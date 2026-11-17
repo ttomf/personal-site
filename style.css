@@ -60,7 +60,7 @@ section {
 article {
     border: 1px solid var(--muted);
     border-radius: 6px;
-    padding: 6px;
+    padding: 10px;
     margin-bottom: 6px;
 }
 
