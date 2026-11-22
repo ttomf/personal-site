@@ -83,6 +83,24 @@
                 Instead of carrying my laptop everywhere, I can simply plug the
                 drive into another computer and boot from it.
             </p>
+            <h2>Update 2026-11-22</h2>
+            <p>
+                Arch Linux is great, but it doesn't have a Microsoft-signed
+                shim. I want to be able to boot it everywhere, even on computers
+                with Secure Boot enabled, so I had to switch from Arch to
+                openSUSE.
+            </p>
+            <p>
+                Its installation was simple using the graphical installer. For
+                liveboot, I just had to set
+                <code>UPDATE_NVRAM</code> to <code>no</code> in
+                <code>/etc/sysconfig/bootloader</code> to prevent it from
+                modifying the NVRAM.
+            </p>
+            <p>
+                I kept the same drive layout. Everything works as expected, but
+                I still miss familiar Arch experience.
+            </p>
             <small>&copy; ttomf 2026</small>
         </main>
     </body>
